@@ -8,6 +8,7 @@ Database: umt_transport_db
 The umt_transport_db database stores all critical information for the Transport Management System. Below are the table structures that define how data is organized.
 
 Tables in the Database:
+
 summons Table
 Column	Type	Description
 id	int(11)	Unique identifier for each summons (Primary Key).
@@ -20,9 +21,7 @@ status	enum('issued', 'paid', 'appealed')	Status of the summons (default is 'iss
 issued_at	timestamp	Timestamp when the summons was issued.
 paid_at	timestamp NULL	Timestamp when the summons was paid. (NULL if unpaid).
 
-sql
-Copy
-Edit
+```sql
 CREATE TABLE `summons` (
   `id` int(11) NOT NULL,
   `vehicle_id` int(11) NOT NULL,
@@ -34,6 +33,9 @@ CREATE TABLE `summons` (
   `issued_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `paid_at` timestamp NULL DEFAULT NULL
 );
+```
+
+`
 users Table
 Column	Type	Description
 id	int(11)	Unique identifier for each user (Primary Key).
@@ -46,9 +48,7 @@ email	varchar(100)	User's email address.
 phone	varchar(20)	Contact phone number.
 created_at	timestamp	Timestamp when the user was created.
 
-sql
-Copy
-Edit
+```sql
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `matric_no` varchar(20) DEFAULT NULL,
@@ -60,6 +60,7 @@ CREATE TABLE `users` (
   `phone` varchar(20) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 );
+```
 vehicles Table
 Column	Type	Description
 id	int(11)	Unique identifier for each vehicle (Primary Key).
@@ -68,9 +69,7 @@ plate_number	varchar(20)	Vehicle plate number.
 model	varchar(50)	Vehicle model.
 created_at	timestamp	Timestamp when the vehicle was registered in the system.
 
-sql
-Copy
-Edit
+```sql
 CREATE TABLE `vehicles` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -78,6 +77,7 @@ CREATE TABLE `vehicles` (
   `model` varchar(50) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 );
+```
 🏗️ Project Structure
 The project is structured to facilitate development and management:
 
